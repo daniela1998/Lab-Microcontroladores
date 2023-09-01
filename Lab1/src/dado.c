@@ -19,9 +19,7 @@ void main(void)
     int new = 0b000;
     // Inicializa el tiempo 
     unsigned int time = 100;
-    //
 
- 
     //Siempre se corre
     while ( 1 )
     {
@@ -31,19 +29,46 @@ void main(void)
         // Si se presiona el boton 
 		if (GP3)
 		{
-            if (rand_num==0b001){
+            // Si la cara es 1
+            if (rand_num == 0b001){
 
                 GPIO = 0b00000010;
                 delay(time);
-                GPIO = 0b0000000;
+                GPIO = 0b00000000;
             }
-            
-
-        }
-
+            // Si la cara es 2
+            if(rand_num == 0b010){
+                GPIO = 0b00000100;
+                delay(time);
+                GPIO = 0b00000000;
+            }
+            // Si la cara es 3
+            if (rand_num == 0b011){
+                GPIO = 0b00000110;
+                delay(time);
+                GPIO = 0b00000000;
+            }
+            // Si la cara es 4
+            if (rand_num == 0b100){
+                GPIO = 0b00000101;
+                delay(time);
+                GPIO = 0b00000000;
+            }
+            // Si la cara es 5
+             if (rand_num == 0b100){
+                GPIO = 0b00000111;
+                delay(time);
+                GPIO = 0b00000000;
+             }
+             // Si la cara es 6
+             if (rand_num == 0b100){
+                GPIO = 0b00010101;
+                delay(time);
+                GPIO = 0b00000000;
+             }
 }
 }
-
+}
 
 
 // Funcion necesaria para el delay
