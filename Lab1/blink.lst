@@ -1,0 +1,426 @@
+gplink-1.4.0 #1107 (Jan  1 2021)
+Copyright (c) 1998-2014 gputils project
+Listing File Generated: 9-2-2023  16:46:22
+ 
+ 
+Address  Value    Disassembly              Source
+-------  -----    -----------              ------
+                                           ;--------------------------------------------------------
+                                           ; File Created by SDCC : free open source ANSI-C Compiler
+                                           ; Version 4.0.0 #11528 (Linux)
+                                           ;--------------------------------------------------------
+                                           ; PIC port for the 14-bit core
+                                           ;--------------------------------------------------------
+                                           ;	.file	"dado.c"
+                                           	list	p=12f675
+                                           	radix dec
+                                           	include "p12f675.inc"
+                                                   LIST
+                                           
+                                           ;==========================================================================
+                                           ; Build date : Aug 07 2014
+                                           ;  MPASM PIC12F675 processor include
+                                           ; 
+                                           ;  (c) Copyright 1999-2014 Microchip Technology, All rights reserved
+                                           ;==========================================================================
+                                           
+                                                   NOLIST
+                                           ;--------------------------------------------------------
+                                           ; config word(s)
+                                           ;--------------------------------------------------------
+002007   3fd7     addlw   0xd7             	__config 0x3fd7
+                                           ;--------------------------------------------------------
+                                           ; external declarations
+                                           ;--------------------------------------------------------
+                                           	extern	_TRISIO
+                                           	extern	_GPIO
+                                           	extern	_GPIObits
+                                           	extern	__sdcc_gsinit_startup
+                                           ;--------------------------------------------------------
+                                           ; global declarations
+                                           ;--------------------------------------------------------
+                                           	global	_main
+                                           	global	_delay
+                                           
+                                           	global PSAVE
+                                           	global SSAVE
+                                           	global WSAVE
+                                           	global STK12
+                                           	global STK11
+                                           	global STK10
+                                           	global STK09
+                                           	global STK08
+                                           	global STK07
+                                           	global STK06
+                                           	global STK05
+                                           	global STK04
+                                           	global STK03
+                                           	global STK02
+                                           	global STK01
+                                           	global STK00
+                                           
+                                           sharebank udata_ovr 0x0020
+                                           PSAVE	res 1
+                                           SSAVE	res 1
+                                           WSAVE	res 1
+                                           STK12	res 1
+                                           STK11	res 1
+                                           STK10	res 1
+                                           STK09	res 1
+                                           STK08	res 1
+                                           STK07	res 1
+                                           STK06	res 1
+                                           STK05	res 1
+                                           STK04	res 1
+                                           STK03	res 1
+                                           STK02	res 1
+                                           STK01	res 1
+                                           STK00	res 1
+                                           
+                                           ;--------------------------------------------------------
+                                           ; global definitions
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; absolute symbol definitions
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; compiler-defined variables
+                                           ;--------------------------------------------------------
+                                           UDL_dado_0	udata
+                                           r0x1008	res	1
+                                           r0x1009	res	1
+                                           r0x100B	res	1
+                                           r0x100A	res	1
+                                           r0x100C	res	1
+                                           r0x100D	res	1
+                                           r0x100E	res	1
+                                           r0x100F	res	1
+                                           r0x1001	res	1
+                                           r0x1000	res	1
+                                           r0x1002	res	1
+                                           r0x1003	res	1
+                                           r0x1004	res	1
+                                           r0x1005	res	1
+                                           r0x1006	res	1
+                                           r0x1007	res	1
+                                           ;--------------------------------------------------------
+                                           ; initialized data
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; initialized absolute data
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; overlayable items in internal ram 
+                                           ;--------------------------------------------------------
+                                           ;	udata_ovr
+                                           ;--------------------------------------------------------
+                                           ; reset vector 
+                                           ;--------------------------------------------------------
+                                           STARTUP	code 0x0000
+000000   0000     nop                      	nop
+                                           	pagesel __sdcc_gsinit_startup
+000001   2802     goto    0x0002           	goto	__sdcc_gsinit_startup
+                                           ;--------------------------------------------------------
+                                           ; code
+                                           ;--------------------------------------------------------
+                                           code_dado	code
+                                           ;***
+                                           ;  pBlock Stats: dbName = M
+                                           ;***
+                                           ;has an exit
+                                           ;functions called:
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;9 compiler assigned registers:
+                                           ;   r0x1008
+                                           ;   r0x1009
+                                           ;   r0x100A
+                                           ;   r0x100B
+                                           ;   r0x100C
+                                           ;   r0x100D
+                                           ;   r0x100E
+                                           ;   r0x100F
+                                           ;   STK00
+                                           ;; Starting pCode block
+                                           S_dado__main	code
+                                           _main:
+                                           ; 2 exit points
+                                           ;	.line	12; "dado.c"	TRISIO = 0b00001000;
+00009e   3008     movlw   0x08             	MOVLW	0x08
+00009f   1683     bsf     0x03, 0x5        	BANKSEL	_TRISIO
+0000a0   0085     movwf   0x05             	MOVWF	_TRISIO
+                                           ;	.line	14; "dado.c"	GPIO = 0b00000000;
+0000a1   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+0000a2   0185     clrf    0x05             	CLRF	_GPIO
+                                           ;	.line	16; "dado.c"	int rand_num =0b001;
+0000a3   3001     movlw   0x01             	MOVLW	0x01
+0000a4   00b0     movwf   0x30             	MOVWF	r0x1008
+0000a5   01b1     clrf    0x31             	CLRF	r0x1009
+                                           ;;shiftRight_Left2ResultLit:5474: shCount=1, size=2, sign=1, same=0, offr=0
+                                           _00120_DS_:
+                                           ;	.line	26; "dado.c"	new=(rand_num ^ (rand_num >> 1)) & 1;
+0000a6   1003     bcf     0x03, 0x0        	BCF	STATUS,0
+0000a7   1bb1     btfsc   0x31, 0x7        	BTFSC	r0x1009,7
+0000a8   1403     bsf     0x03, 0x0        	BSF	STATUS,0
+0000a9   0c31     rrf     0x31, 0x0        	RRF	r0x1009,W
+0000aa   00b3     movwf   0x33             	MOVWF	r0x100A
+0000ab   0c30     rrf     0x30, 0x0        	RRF	r0x1008,W
+0000ac   00b2     movwf   0x32             	MOVWF	r0x100B
+0000ad   0630     xorwf   0x30, 0x0        	XORWF	r0x1008,W
+0000ae   00b4     movwf   0x34             	MOVWF	r0x100C
+0000af   0833     movf    0x33, 0x0        	MOVF	r0x100A,W
+0000b0   0631     xorwf   0x31, 0x0        	XORWF	r0x1009,W
+0000b1   00b5     movwf   0x35             	MOVWF	r0x100D
+0000b2   3001     movlw   0x01             	MOVLW	0x01
+0000b3   05b4     andwf   0x34, 0x1        	ANDWF	r0x100C,F
+0000b4   01b5     clrf    0x35             	CLRF	r0x100D
+                                           ;	.line	27; "dado.c"	rand_num= (rand_num >> 1) | (new << 2);
+0000b5   1003     bcf     0x03, 0x0        	BCF	STATUS,0
+0000b6   0d34     rlf     0x34, 0x0        	RLF	r0x100C,W
+0000b7   00b6     movwf   0x36             	MOVWF	r0x100E
+0000b8   0d35     rlf     0x35, 0x0        	RLF	r0x100D,W
+0000b9   00b7     movwf   0x37             	MOVWF	r0x100F
+0000ba   1003     bcf     0x03, 0x0        	BCF	STATUS,0
+0000bb   0db6     rlf     0x36, 0x1        	RLF	r0x100E,F
+0000bc   0db7     rlf     0x37, 0x1        	RLF	r0x100F,F
+0000bd   0836     movf    0x36, 0x0        	MOVF	r0x100E,W
+0000be   0432     iorwf   0x32, 0x0        	IORWF	r0x100B,W
+0000bf   00b0     movwf   0x30             	MOVWF	r0x1008
+0000c0   0837     movf    0x37, 0x0        	MOVF	r0x100F,W
+0000c1   0433     iorwf   0x33, 0x0        	IORWF	r0x100A,W
+0000c2   00b1     movwf   0x31             	MOVWF	r0x1009
+                                           ;	.line	29; "dado.c"	if (GP3)
+0000c3   1283     bcf     0x03, 0x5        	BANKSEL	_GPIObits
+0000c4   1d85     btfss   0x05, 0x3        	BTFSS	_GPIObits,3
+0000c5   28a6     goto    0x00a6           	GOTO	_00120_DS_
+                                           ;	.line	32; "dado.c"	if (rand_num == 0b001){
+0000c6   0830     movf    0x30, 0x0        	MOVF	r0x1008,W
+0000c7   3a01     xorlw   0x01             	XORLW	0x01
+0000c8   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000c9   28d6     goto    0x00d6           	GOTO	_00106_DS_
+0000ca   0831     movf    0x31, 0x0        	MOVF	r0x1009,W
+0000cb   3a00     xorlw   0x00             	XORLW	0x00
+0000cc   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000cd   28d6     goto    0x00d6           	GOTO	_00106_DS_
+                                           ;	.line	34; "dado.c"	GPIO = 0b00000010;
+0000ce   3002     movlw   0x02             	MOVLW	0x02
+0000cf   0085     movwf   0x05             	MOVWF	_GPIO
+                                           ;	.line	35; "dado.c"	delay(time);
+0000d0   30e8     movlw   0xe8             	MOVLW	0xe8
+0000d1   00af     movwf   0x2f             	MOVWF	STK00
+0000d2   3003     movlw   0x03             	MOVLW	0x03
+                                           	PAGESEL	_delay
+0000d3   2161     call    0x0161           	CALL	_delay
+                                           	PAGESEL	$
+                                           ;	.line	36; "dado.c"	GPIO = 0b00000000;
+0000d4   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+0000d5   0185     clrf    0x05             	CLRF	_GPIO
+                                           _00106_DS_:
+                                           ;	.line	39; "dado.c"	if(rand_num == 0b010){
+0000d6   0830     movf    0x30, 0x0        	MOVF	r0x1008,W
+0000d7   3a02     xorlw   0x02             	XORLW	0x02
+0000d8   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000d9   28e7     goto    0x00e7           	GOTO	_00108_DS_
+0000da   0831     movf    0x31, 0x0        	MOVF	r0x1009,W
+0000db   3a00     xorlw   0x00             	XORLW	0x00
+0000dc   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000dd   28e7     goto    0x00e7           	GOTO	_00108_DS_
+                                           ;	.line	40; "dado.c"	GPIO = 0b00000100;
+0000de   3004     movlw   0x04             	MOVLW	0x04
+0000df   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+0000e0   0085     movwf   0x05             	MOVWF	_GPIO
+                                           ;	.line	41; "dado.c"	delay(time);
+0000e1   30e8     movlw   0xe8             	MOVLW	0xe8
+0000e2   00af     movwf   0x2f             	MOVWF	STK00
+0000e3   3003     movlw   0x03             	MOVLW	0x03
+                                           	PAGESEL	_delay
+0000e4   2161     call    0x0161           	CALL	_delay
+                                           	PAGESEL	$
+                                           ;	.line	42; "dado.c"	GPIO = 0b00000000;
+0000e5   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+0000e6   0185     clrf    0x05             	CLRF	_GPIO
+                                           _00108_DS_:
+                                           ;	.line	45; "dado.c"	if (rand_num == 0b011){
+0000e7   0830     movf    0x30, 0x0        	MOVF	r0x1008,W
+0000e8   3a03     xorlw   0x03             	XORLW	0x03
+0000e9   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000ea   28f8     goto    0x00f8           	GOTO	_00110_DS_
+0000eb   0831     movf    0x31, 0x0        	MOVF	r0x1009,W
+0000ec   3a00     xorlw   0x00             	XORLW	0x00
+0000ed   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000ee   28f8     goto    0x00f8           	GOTO	_00110_DS_
+                                           ;	.line	46; "dado.c"	GPIO = 0b00000110;
+0000ef   3006     movlw   0x06             	MOVLW	0x06
+0000f0   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+0000f1   0085     movwf   0x05             	MOVWF	_GPIO
+                                           ;	.line	47; "dado.c"	delay(time);
+0000f2   30e8     movlw   0xe8             	MOVLW	0xe8
+0000f3   00af     movwf   0x2f             	MOVWF	STK00
+0000f4   3003     movlw   0x03             	MOVLW	0x03
+                                           	PAGESEL	_delay
+0000f5   2161     call    0x0161           	CALL	_delay
+                                           	PAGESEL	$
+                                           ;	.line	48; "dado.c"	GPIO = 0b00000000;
+0000f6   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+0000f7   0185     clrf    0x05             	CLRF	_GPIO
+                                           _00110_DS_:
+                                           ;	.line	51; "dado.c"	if (rand_num == 0b100){
+0000f8   0830     movf    0x30, 0x0        	MOVF	r0x1008,W
+0000f9   3a04     xorlw   0x04             	XORLW	0x04
+0000fa   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000fb   2909     goto    0x0109           	GOTO	_00112_DS_
+0000fc   0831     movf    0x31, 0x0        	MOVF	r0x1009,W
+0000fd   3a00     xorlw   0x00             	XORLW	0x00
+0000fe   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000ff   2909     goto    0x0109           	GOTO	_00112_DS_
+                                           ;	.line	52; "dado.c"	GPIO = 0b00000101;
+000100   3005     movlw   0x05             	MOVLW	0x05
+000101   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+000102   0085     movwf   0x05             	MOVWF	_GPIO
+                                           ;	.line	53; "dado.c"	delay(time);
+000103   30e8     movlw   0xe8             	MOVLW	0xe8
+000104   00af     movwf   0x2f             	MOVWF	STK00
+000105   3003     movlw   0x03             	MOVLW	0x03
+                                           	PAGESEL	_delay
+000106   2161     call    0x0161           	CALL	_delay
+                                           	PAGESEL	$
+                                           ;	.line	54; "dado.c"	GPIO = 0b00000000;
+000107   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+000108   0185     clrf    0x05             	CLRF	_GPIO
+                                           _00112_DS_:
+                                           ;	.line	57; "dado.c"	if (rand_num == 0b101){
+000109   0830     movf    0x30, 0x0        	MOVF	r0x1008,W
+00010a   3a05     xorlw   0x05             	XORLW	0x05
+00010b   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+00010c   291a     goto    0x011a           	GOTO	_00114_DS_
+00010d   0831     movf    0x31, 0x0        	MOVF	r0x1009,W
+00010e   3a00     xorlw   0x00             	XORLW	0x00
+00010f   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+000110   291a     goto    0x011a           	GOTO	_00114_DS_
+                                           ;	.line	58; "dado.c"	GPIO = 0b00000111;
+000111   3007     movlw   0x07             	MOVLW	0x07
+000112   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+000113   0085     movwf   0x05             	MOVWF	_GPIO
+                                           ;	.line	59; "dado.c"	delay(time);
+000114   30e8     movlw   0xe8             	MOVLW	0xe8
+000115   00af     movwf   0x2f             	MOVWF	STK00
+000116   3003     movlw   0x03             	MOVLW	0x03
+                                           	PAGESEL	_delay
+000117   2161     call    0x0161           	CALL	_delay
+                                           	PAGESEL	$
+                                           ;	.line	60; "dado.c"	GPIO = 0b00000000;
+000118   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+000119   0185     clrf    0x05             	CLRF	_GPIO
+                                           _00114_DS_:
+                                           ;	.line	63; "dado.c"	if (rand_num == 0b110){
+00011a   0830     movf    0x30, 0x0        	MOVF	r0x1008,W
+00011b   3a06     xorlw   0x06             	XORLW	0x06
+00011c   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+00011d   28a6     goto    0x00a6           	GOTO	_00120_DS_
+00011e   0831     movf    0x31, 0x0        	MOVF	r0x1009,W
+00011f   3a00     xorlw   0x00             	XORLW	0x00
+000120   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+000121   28a6     goto    0x00a6           	GOTO	_00120_DS_
+                                           ;	.line	64; "dado.c"	GPIO = 0b00010101;
+000122   3015     movlw   0x15             	MOVLW	0x15
+000123   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+000124   0085     movwf   0x05             	MOVWF	_GPIO
+                                           ;	.line	65; "dado.c"	delay(time);
+000125   30e8     movlw   0xe8             	MOVLW	0xe8
+000126   00af     movwf   0x2f             	MOVWF	STK00
+000127   3003     movlw   0x03             	MOVLW	0x03
+                                           	PAGESEL	_delay
+000128   2161     call    0x0161           	CALL	_delay
+                                           	PAGESEL	$
+                                           ;	.line	66; "dado.c"	GPIO = 0b00000000;
+000129   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+00012a   0185     clrf    0x05             	CLRF	_GPIO
+00012b   28a6     goto    0x00a6           	GOTO	_00120_DS_
+                                           ;	.line	70; "dado.c"	}
+00012c   0008     return                   	RETURN	
+                                           ; exit point of _main
+                                           
+                                           ;***
+                                           ;  pBlock Stats: dbName = C
+                                           ;***
+                                           ;has an exit
+                                           ;9 compiler assigned registers:
+                                           ;   r0x1000
+                                           ;   STK00
+                                           ;   r0x1001
+                                           ;   r0x1002
+                                           ;   r0x1003
+                                           ;   r0x1004
+                                           ;   r0x1005
+                                           ;   r0x1006
+                                           ;   r0x1007
+                                           ;; Starting pCode block
+                                           S_dado__delay	code
+                                           _delay:
+                                           ; 2 exit points
+                                           ;	.line	73; "dado.c"	void delay(unsigned int tiempo)
+000161   00b9     movwf   0x39             	MOVWF	r0x1000
+000162   082f     movf    0x2f, 0x0        	MOVF	STK00,W
+000163   00b8     movwf   0x38             	MOVWF	r0x1001
+                                           ;	.line	78; "dado.c"	for(i=0;i<tiempo;i++)
+000164   01ba     clrf    0x3a             	CLRF	r0x1002
+000165   01bb     clrf    0x3b             	CLRF	r0x1003
+                                           _00131_DS_:
+000166   0839     movf    0x39, 0x0        	MOVF	r0x1000,W
+000167   023b     subwf   0x3b, 0x0        	SUBWF	r0x1003,W
+000168   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+000169   296c     goto    0x016c           	GOTO	_00152_DS_
+00016a   0838     movf    0x38, 0x0        	MOVF	r0x1001,W
+00016b   023a     subwf   0x3a, 0x0        	SUBWF	r0x1002,W
+                                           _00152_DS_:
+00016c   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
+00016d   2987     goto    0x0187           	GOTO	_00133_DS_
+                                           ;;genSkipc:3307: created from rifx:0x7ffd0b2763e0
+                                           ;	.line	79; "dado.c"	for(j=0;j<1275;j++);
+00016e   30fb     movlw   0xfb             	MOVLW	0xfb
+00016f   00bc     movwf   0x3c             	MOVWF	r0x1004
+000170   3004     movlw   0x04             	MOVLW	0x04
+000171   00bd     movwf   0x3d             	MOVWF	r0x1005
+                                           _00129_DS_:
+000172   30ff     movlw   0xff             	MOVLW	0xff
+000173   073c     addwf   0x3c, 0x0        	ADDWF	r0x1004,W
+000174   00be     movwf   0x3e             	MOVWF	r0x1006
+000175   30ff     movlw   0xff             	MOVLW	0xff
+000176   00bf     movwf   0x3f             	MOVWF	r0x1007
+000177   083d     movf    0x3d, 0x0        	MOVF	r0x1005,W
+000178   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
+000179   0f3d     incfsz  0x3d, 0x0        	INCFSZ	r0x1005,W
+00017a   07bf     addwf   0x3f, 0x1        	ADDWF	r0x1007,F
+00017b   083e     movf    0x3e, 0x0        	MOVF	r0x1006,W
+00017c   00bc     movwf   0x3c             	MOVWF	r0x1004
+00017d   083f     movf    0x3f, 0x0        	MOVF	r0x1007,W
+00017e   00bd     movwf   0x3d             	MOVWF	r0x1005
+00017f   083f     movf    0x3f, 0x0        	MOVF	r0x1007,W
+000180   043e     iorwf   0x3e, 0x0        	IORWF	r0x1006,W
+000181   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+000182   2972     goto    0x0172           	GOTO	_00129_DS_
+                                           ;	.line	78; "dado.c"	for(i=0;i<tiempo;i++)
+000183   0aba     incf    0x3a, 0x1        	INCF	r0x1002,F
+000184   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
+000185   0abb     incf    0x3b, 0x1        	INCF	r0x1003,F
+000186   2966     goto    0x0166           	GOTO	_00131_DS_
+                                           _00133_DS_:
+                                           ;	.line	80; "dado.c"	}
+000187   0008     return                   	RETURN	
+                                           ; exit point of _delay
+                                           
+                                           
+                                           ;	code size estimation:
+                                           ;	  168+   26 =   194 instructions (  440 byte)
+                                           
+                                           	end

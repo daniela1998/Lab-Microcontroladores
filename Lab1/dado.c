@@ -5,26 +5,25 @@ word __at 0x2007 __CONFIG = (_WDTE_OFF & _WDT_OFF & _MCLRE_OFF);
 
 // Se definen las funciones a utilizar para el delay y el rand_num
 void delay (unsigned tiempo);
-unsigned int rand(unsigned int min_value, unsigned int max_value);
 
 void main(void)
 {
     // Todos los pines son salidas menos GP3
-    TRISIO = 0b00000000;
+    TRISIO = 0b00001000;
     // Pines se ponen en bajo
-    GPIO = 0x00;
+    GPIO = 0b00000000;
     // Valor inicial del num rand
-    int rand_num =0b101;
+    int rand_num =0b001;
     // Cambia el valor del rand
     int new = 0b000;
     // Inicializa el tiempo 
-    unsigned int time = 100;
+    unsigned int time = 1000;
 
     //Siempre se corre
     while ( 1 )
     {
         // Se generan los numeros aleatorios con linear-feedback shift register method 
-		newbit=(rand_num ^ (rand_num >> 1)) & 1;
+		new=(rand_num ^ (rand_num >> 1)) & 1;
 		rand_num= (rand_num >> 1) | (new << 2);
         // Si se presiona el boton 
 		if (GP3)
@@ -55,13 +54,13 @@ void main(void)
                 GPIO = 0b00000000;
             }
             // Si la cara es 5
-             if (rand_num == 0b100){
+             if (rand_num == 0b101){
                 GPIO = 0b00000111;
                 delay(time);
                 GPIO = 0b00000000;
              }
              // Si la cara es 6
-             if (rand_num == 0b100){
+             if (rand_num == 0b110){
                 GPIO = 0b00010101;
                 delay(time);
                 GPIO = 0b00000000;
@@ -69,7 +68,6 @@ void main(void)
 }
 }
 }
-
 
 // Funcion necesaria para el delay
 void delay(unsigned int tiempo)
